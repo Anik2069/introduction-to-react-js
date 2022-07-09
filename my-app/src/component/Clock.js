@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Button from './Button';
 class Clock extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: new Date(),
-        };
-    }
+    state = { date: new Date(), locale: 'bn-BD' };
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         date: new Date(),
+    //     };
+    // }
 
     componentDidMount() {
         this.clocktimer = setInterval(() => this.tick(), 1000);
@@ -20,17 +22,27 @@ class Clock extends React.Component {
     componentWillUnmount() {
         clearInterval(this.clocktimer)
     }
+    //best practics
+    handleClick = (locale) => {
+        //e.preventDefault();
 
+        this.setState({
+            locale: locale,
+        });
+    }
     render() {
-        return (
+        const { date, locale } = this.state;
+        return (<div>
             <h1 className="heading">
-                <span>Date {this.state.date.getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br />
-                <span>Time {this.state.date.toLocaleTimeString(this.props.locale)}</span>
+                <span>Date {date.getDate()}-{date.getMonth()}-{date.getFullYear()}</span> <br />
+                <span>Time {date.toLocaleTimeString(locale)}</span>
             </h1>
+            <Button change={this.handleClick.bind(this, 'en-US')}>Click Here</Button>
+        </div>
         );
     }
 }
-
+/* <button type='button' onClick={this.handleClick.bind(this,'en-US')}>Click Here</button> */
 
 
 export default Clock;
