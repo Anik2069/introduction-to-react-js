@@ -15,23 +15,52 @@ import ReactDOM from 'react-dom';
 // }, 1000);
 
 
-//Component
+//Functional Component
 
-function Clock({locale}){
-  return (
-    <h1 className="heading">
-       <span>Date {new Date().getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br/>
-      <span>Time {new Date().toLocaleTimeString(locale)}</span>
-    </h1>
-  );
-}
+// function Clock({locale}){
+//   return (
+//     <h1 className="heading">
+//        <span>Date {new Date().getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br/>
+//       <span>Time {new Date().toLocaleTimeString(locale)}</span>
+//     </h1>
+//   );
+// }
 
 //One Way
 //ReactDOM.render(Clock(), document.getElementById('root'));
 //2nd Way 
-ReactDOM.render(<Clock locale="bn-BD"/>, document.getElementById('root'));
+//ReactDOM.render(<Clock locale="bn-BD" />, document.getElementById('root'));
 
 
+
+//Class Component
+
+// class Clock {
+//   print() {
+//     return (
+//       <h1 className="heading">
+//         <span>Date {new Date().getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br />
+//         <span>Time {new Date().toLocaleTimeString()}</span>
+//       </h1>
+//     );
+//   }
+// }
+// const ClockComponent  =  new Clock();
+// ReactDOM.render(ClockComponent.print(), document.getElementById('root'));
+
+
+class Clock extends React.Component {
+  render() {
+    return (
+      <h1 className="heading">
+        <span>Date {new Date().getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br />
+        <span>Time {new Date().toLocaleTimeString()}</span>
+      </h1>
+    );
+  }
+}
+
+ReactDOM.render(<Clock />, document.getElementById('root'));
 
 
 // If you want to start measuring performance in your app, pass a function
