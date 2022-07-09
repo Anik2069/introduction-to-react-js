@@ -53,14 +53,15 @@ class Clock extends React.Component {
   render() {
     return (
       <h1 className="heading">
+        {this.props.children} <br />
         <span>Date {new Date().getDate()}-{new Date().getMonth()}-{new Date().getFullYear()}</span> <br />
-        <span>Time {new Date().toLocaleTimeString()}</span>
+        <span>Time {new Date().toLocaleTimeString(this.props.locale)}</span>
       </h1>
     );
   }
 }
 
-ReactDOM.render(<Clock />, document.getElementById('root'));
+ReactDOM.render(<Clock locale="bn-BD"> children Component </Clock>, document.getElementById('root'));
 
 
 // If you want to start measuring performance in your app, pass a function
