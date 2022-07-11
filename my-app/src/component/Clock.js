@@ -37,7 +37,7 @@ class Clock extends React.Component {
                 <span>Date {date.getDate()}-{date.getMonth()}-{date.getFullYear()}</span> <br />
                 <span>Time {date.toLocaleTimeString(locale)}</span>
             </h1>
-            <Button change={this.handleClick.bind(this, 'en-US')}>Click Here</Button>
+            <Button change={()=>this.handleClick('en-US')}>Click Here</Button>
         </div>
         );
     }
